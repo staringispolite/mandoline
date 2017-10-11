@@ -58,13 +58,25 @@ def buildComment(segment):
   commentUsed = possibles[0]
   return "%s %s" % (commentUsed, buildHashtags())
 
+def initializeDB(segments):
+  for row in segments:
+    if len(row) == 3:
+      # Fresh out of ffmpeg's segmentation
+      row.append("0")
+    else:
+      # Reset to initial state
+      row[POSTED] = "0"
+  return segments
 
 next_to_upload_id = 0
 segments = []
 parser = argparse.ArgumentParser(description='Upload segments of video to Instagram')
+parser.add_argument('--reset-segments', dest='reset', type=bool, default=False,
+    help="Initialize the segments database, or reset if it already exists. WARNING: CANNOT UNDO.")
 parser.add_argument('--basepath', dest='path', default="./",
     help="The absolute path (ending in /) to a directory containing segment files and a segment list from ffmpeg")
 args = parser.parse_args()
+
 
 # Read in segments DB
 # Format: filename, start time(sec), end time(sec), posted (0/1)
@@ -75,27 +87,30 @@ with open("%s%s" % (args.path, 'segments.db'), 'rb') as segmentfile:
     #print row
     segments.append(row)
 
-# Find first that hasn't been posted.
-i = 0
-for row in segments:
-  if row[POSTED] == "0":
-    next_to_upload_id = i
-    break
-  i += 1
+if args.reset:
+  initializeDB(segments)
+else:
+  # Find first that hasn't been posted.
+  i = 0
+  for row in segments:
+    if row[POSTED] == "0":
+      next_to_upload_id = i
+      break
+    i += 1
 
-# Post to IG
-username = ''
-password = ''
-filename = "%s%s" % (args.path, segments[next_to_upload_id][FILENAME])
-comment = buildComment(segments[next_to_upload_id])
-print "Posting %s..." % filename
-print "Comment: %s" % comment
-command = "php %s../upload.php %s %s %s \"%s\"" % (
-    args.path, username, password, filename, comment)
-print "Calling command %s" % command
-call(command, shell=True)
+  # Post to IG
+  username = ''
+  password = ''
+  filename = "%s%s" % (args.path, segments[next_to_upload_id][FILENAME])
+  comment = buildComment(segments[next_to_upload_id])
+  print "Posting %s..." % filename
+  print "Comment: %s" % comment
+  command = "php %s../upload.php %s %s %s \"%s\"" % (
+      args.path, username, password, filename, comment)
+  print "Calling command %s" % command
+  #call(command, shell=True)
 
-segments[next_to_upload_id][POSTED] = 1
+  segments[next_to_upload_id][POSTED] = 1
 
 # Write segment DB to disk
 with open("%s%s" % (args.path, 'segments.db'), 'wb') as segmentdb_file:
