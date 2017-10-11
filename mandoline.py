@@ -14,9 +14,14 @@ def buildHashtags():
   possibles = ["#trains", "#train", "#training", "#trainspotting",
       "#slowtrainkeepsonrolling", "#norway", "#choochoo",
       "#railroads", "#rail", "#trainstation", "#locomotive",
-      "#clouds", "#outside", "#nature", "#slowtv", "#snow", "#trees"]
+      "#clouds", "#outside", "#nature", "#slowtv", "#snow", "#trees",
+      "#landscape", "#landscapelovers", "#mountains", "#naturelovers",
+      "#outside", "#travel", "#backpacking", "#travelling", "#travelgram",
+      "#traintracks", "#followtrain", "#sky", "#winter", "#winterwonderland",
+      "#fall", "#leaves", "seasons", "#instamood", "#video", "#relaxing",
+      "#autumn", "#traveltheworld"]
   random.shuffle(possibles)
-  used = possibles[:5]
+  used = possibles[:10]
   return " ".join(used)
 
 # Build a comment based on randomized hashtags and templates
@@ -49,8 +54,8 @@ for row in segments:
   i += 1
 
 # Post to IG
-username = 'iamaslowtrain'
-password = 'Tr4inst4gr4m30'
+username = ''
+password = ''
 filename = "%s%s" % (args.path, segments[next_to_upload_id][FILENAME])
 comment = buildComment(segments[next_to_upload_id])
 print "Posting %s..." % filename
