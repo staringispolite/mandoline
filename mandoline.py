@@ -26,7 +26,37 @@ def buildHashtags():
 
 # Build a comment based on randomized hashtags and templates
 def buildComment(segment):
-  return "On my way across Norway! Wheeee %s" % buildHashtags()
+  possibles = ["All aboard!", "On my way across Norway!", "Wheeeee", "let's gooo",
+      "On my way from Bergen to Oslo", "In the mountains of Norway", "slow & steady",
+      "Chugging along", "I am quite slow, but I'm also determined", "steady as she goes",
+      "Here we go!", "Norway is the world's largest exporter of salmon. I am a train.",
+      "Slow and steady wins the race to Oslo", "Somewhere in the mountains of Norway",
+      "tracks for days", "Almost there! (jk it is quite far)", "Somewhere between Bergen and Oslo",
+      "Wait am I lost?", "Are... we going in circles?", "Deja vu is common in trains bc we do the same route over and over",
+      "I love this part", "Check this part out", "Ooh I saw a moose back there",
+      "CHUG-a-chug-a-chug-a-chug-a-chuga...", "choo choooo", "I am a train", "I am quite slow",
+      "What I make for in speed, I make up for in social media use",
+      "Am I carrying freight or passengers? I can't see back there",
+      "Brrr it's cold today", "Great weather today!", "tunnels are my favorite. I wonder if there's one coming up",
+      "Bridges are scary. They're too high, and I'm heavy", "I wish I spoke more Norwegian",
+      "Hallo", "Hallo, I am a train", "Hallo! Can anyone teach me more Norwegian?",
+      "Hei", "Heisann", "Hei pa deg", "Halla", "Hei hei", "I learned some Norwegian! Jeg er et tog",
+      "Heading to Whole Foods, want anything",
+      "Fun fact: Norwegians founded Dublin, Ireland, in A.D. 836",
+      "Fun fact: Norway was originally Nordweg, or the 'Northern Way'. Northern -> North -> Nor' Way?",
+      "Fun fact: Norway's formal name is Kongeriket Norge (Kingdom of Norway)",
+      "Fun fact: The cheese slicer was invented in Norway in 1925 by Thor Bjorklund",
+      "Fun fact: early trains were pulled by horses. Not me though.",
+      "Fun fact: The first travel agency started for a train ride, when Thomas Cook a church trip",
+      "I know a train that carries ore from mines in the mountains of Sweden down to Narvik in Norway. It generates more electricity than it uses, and powers nearby towns.",
+      "Someone just told me you can travel from Portugal to Vietnam, just by train",
+      "Did you know the Hogwarts Express Train is played by my friend, a train in Scotland?",
+      "Most train horns are based on musical chords. Passenger trains are nice Major 6th chords",
+      "Most train horns are based on musical chords. Freight trains are usually something unpleasant, like diminished 7th chords"
+      ]
+  random.shuffle(possibles)
+  commentUsed = possibles[0]
+  return "%s %s" % (commentUsed, buildHashtags())
 
 
 next_to_upload_id = 0
