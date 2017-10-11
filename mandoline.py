@@ -18,7 +18,7 @@ def buildHashtags():
       "#landscape", "#landscapelovers", "#mountains", "#naturelovers",
       "#outside", "#travel", "#backpacking", "#travelling", "#travelgram",
       "#traintracks", "#followtrain", "#sky", "#winter", "#winterwonderland",
-      "#fall", "#leaves", "seasons", "#instamood", "#video", "#relaxing",
+      "#fall", "#leaves", "#seasons", "#instamood", "#video", "#relaxing",
       "#autumn", "#traveltheworld"]
   random.shuffle(possibles)
   used = possibles[:10]
