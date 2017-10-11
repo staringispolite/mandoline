@@ -20,23 +20,23 @@ $captionText = $argv[4];
 $ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
 
 try {
-    $ig->setUser($username, $password);
-    $ig->login();
+  $ig->setUser($username, $password);
+  $ig->login();
 } catch (\Exception $e) {
-    echo 'Something went wrong: '.$e->getMessage()."\n";
-    exit(0);
+  echo 'Something went wrong: '.$e->getMessage()."\n";
+  exit(0);
 }
 
 try {
-    // Note that this performs a few automatic chunk upload retries by default,
-    // in case of failing to upload the video chunks to Instagram's server!
-    $metadata = ['caption' => $captionText];
-    $ig->uploadTimelineVideo($videoFilename, $metadata);
+  // Note that this performs a few automatic chunk upload retries by default,
+  // in case of failing to upload the video chunks to Instagram's server!
+  $metadata = ['caption' => $captionText];
+  $ig->uploadVideo($videoFilename, $captionText);
 
-    // or...
+  // or...
 
-    // Example of using 8 retries instead of the default amount:
-    // $ig->timeline->uploadVideo($videoFilename, ['caption' => $captionText], 8);
+  // Example of using 8 retries instead of the default amount:
+  // $ig->timeline->uploadVideo($videoFilename, ['caption' => $captionText], 8);
 } catch (\Exception $e) {
-    echo 'Something went wrong: '.$e->getMessage()."\n";
+  echo 'Something went wrong: '.$e->getMessage()."\n";
 }
