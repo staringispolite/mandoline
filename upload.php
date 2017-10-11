@@ -20,8 +20,7 @@ $captionText = $argv[4];
 $ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
 
 try {
-  $ig->setUser($username, $password);
-  $ig->login();
+  $ig->login($username, $password);
 } catch (\Exception $e) {
   echo 'Something went wrong: '.$e->getMessage()."\n";
   exit(0);
@@ -31,7 +30,8 @@ try {
   // Note that this performs a few automatic chunk upload retries by default,
   // in case of failing to upload the video chunks to Instagram's server!
   $metadata = ['caption' => $captionText];
-  $ig->uploadVideo($videoFilename, $captionText);
+  $ig->timeline->uploadVideo($videoFilename, $metadata);
+  $ig->story->uploadVideo($videoFilename, $metadata);
 
   // or...
 
