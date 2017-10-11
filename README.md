@@ -2,14 +2,18 @@
 
 ## Slice video into 30 second segments, post to Instagram over time
 
-## Setup
+## Setup on Digital Ocean:
 - DigitalOcean LAMP server (really just need Linux and PHP)
-- `apt install curl php-curl php7.0-mbstring zip unzip php7.0-zip ffmpeg` 
+- `apt install curl php-curl php7.0-mbstring zip unzip php7.0-zip ffmpeg ubuntu-restricted-extras` 
 - Install composer https://getcomposer.org/doc/00-intro.md#globally
 - Install Instagram PHP API https://github.com/mgp25/Instagram-API
 
-## Video splitting
-- install ffmpeg
+## Setup on Macbook:
+- Install PHP, Python, ffmpeg
+- Install composer https://getcomposer.org/doc/00-intro.md#globally
+- Install Instagram PHP API https://github.com/mgp25/Instagram-API
+
+## Video splitting:
 - Split video (assuming it's ./video.mp4)
 - `> ffmpeg -i video.mp4 -codec copy -f segment -reset_timestamps 1 -segment_list segment_list.txt -segment_list_type csv -segment_time 30 segment%03d.mp4`
 - Scale down if need be (Instagram only accepts 480p-720p width as of this writing)
