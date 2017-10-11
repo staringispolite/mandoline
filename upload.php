@@ -31,7 +31,8 @@ try {
   // in case of failing to upload the video chunks to Instagram's server!
   $metadata = ['caption' => $captionText];
   $ig->timeline->uploadVideo($videoFilename, $metadata);
-  $ig->story->uploadVideo($videoFilename, $metadata);
+  // Add stories if/when I have different content to post.
+  //$ig->story->uploadVideo($videoFilename, $metadata);
 
   // or...
 
