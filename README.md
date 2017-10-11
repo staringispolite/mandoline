@@ -22,3 +22,17 @@
 - Optional: Split out story videos (can only be 15 seconds, using 14sec because copy codec can be imprecise). For example:
 - `cd scaled; mkdir story`
 - `find . -name "segment*.mp4" -exec echo ffmpeg -ss 0:00 -i {} -t 14 -c copy story/{} \;`
+
+## Get ready to post
+- `> git clone https://github.com/staringispolite/mandoline.git`
+- `cd mandoline`
+- `mkdir segments`
+- `cp segment*.mp4 ./segments`
+- `cp segment_list.txt ./segments/segments.db`
+
+## Post to Instagram
+- `python mandoline.py --basepath="/abs/path/to/segments/"` (end with a /)
+
+## Post automatically via cron
+- Adding the following to your crontab, to post at 8am and 8pm UTC:
+- `0 8,16 * * *   username    python /absolute/path/to/mandoline.py --basepath="/absolute/path/to/segments/"`
