@@ -3,7 +3,9 @@
 ## Slice video into 30 second segments, post to Instagram over time
 
 ## Setup
-- Install PHP and composer https://getcomposer.org/doc/00-intro.md#globally
+- DigitalOcean LAMP server (really just need Linux and PHP)
+- `apt install curl php-curl php7.0-mbstring zip unzip php7.0-zip ffmpeg` 
+- Install composer https://getcomposer.org/doc/00-intro.md#globally
 - Install Instagram PHP API https://github.com/mgp25/Instagram-API
 
 ## Video splitting
