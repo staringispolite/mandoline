@@ -108,7 +108,7 @@ else:
   command = "php %s../upload.php %s %s %s \"%s\"" % (
       args.path, username, password, filename, comment)
   print "Calling command %s" % command
-  #call(command, shell=True)
+  call(command, shell=True)
 
   segments[next_to_upload_id][POSTED] = 1
 
