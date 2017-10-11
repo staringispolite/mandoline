@@ -29,6 +29,7 @@
 - `mkdir segments`
 - `cp segment*.mp4 ./segments`
 - `cp segment_list.txt ./segments/segments.db`
+- Add Instagram username & password to mandoline.py
 
 ## Post to Instagram
 - `python mandoline.py --basepath="/abs/path/to/segments/"` (end with a /)
