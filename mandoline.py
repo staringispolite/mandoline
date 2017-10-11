@@ -14,7 +14,7 @@ def buildHashtags():
   possibles = ["#trains", "#train", "#training", "#trainspotting",
       "#slowtrainkeepsonrolling", "#norway", "#choochoo",
       "#railroads", "#rail", "#trainstation", "#locomotive",
-      "#clouds", "#outside"]
+      "#clouds", "#outside", "#nature", "#slowtv", "#snow", "#trees"]
   random.shuffle(possibles)
   used = possibles[:5]
   return " ".join(used)
