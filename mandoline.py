@@ -1,4 +1,5 @@
 #!usr/bin/python
+# -*- coding: utf-8 -*-
 import argparse
 import csv
 import random
@@ -9,6 +10,15 @@ FILENAME = 0
 TIMESTART = 1
 TIMESTOP = 2
 POSTED = 3
+
+def buildEmojis():
+  nature = ["🌲", "🌳", "🍂", "❄"]
+  places = ["⛰", "🏔", "🏡", "🌅", "🌄", "🇳🇴"]
+  trains = ["🚂", "🚃", "🚉", "🚊", "🚞", "🛤"]
+  random.shuffle(nature)
+  random.shuffle(places)
+  random.shuffle(trains)
+  return "%s %s %s" % (nature[0], places[0], trains[0])
 
 def buildHashtags():
   possibles = ["#trains", "#train", "#training", "#trainspotting",
@@ -56,7 +66,7 @@ def buildComment(segment):
       ]
   random.shuffle(possibles)
   commentUsed = possibles[0]
-  return "%s %s" % (commentUsed, buildHashtags())
+  return "%s %s %s" % (buildEmojis(), commentUsed, buildHashtags())
 
 def initializeDB(segments):
   for row in segments:
@@ -76,7 +86,6 @@ parser.add_argument('--reset-segments', dest='reset', type=bool, default=False,
 parser.add_argument('--basepath', dest='path', default="./",
     help="The absolute path (ending in /) to a directory containing segment files and a segment list from ffmpeg")
 args = parser.parse_args()
-
 
 # Read in segments DB
 # Format: filename, start time(sec), end time(sec), posted (0/1)
