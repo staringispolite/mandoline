@@ -9,10 +9,11 @@ session = InstaPy(username=insta_username, password=insta_password, nogui=True)
 session.login()
 
 # Set up all the settings
-session.set_upper_follower_count(limit = 5000)
-session.set_lower_follower_count(limit = 50)
-session.set_dont_include([])
-session.set_do_follow(enabled=True, percentage=90, times=2)
+session.set_upper_follower_count(limit = 5000)  # Don't follow super popular accounts.
+session.set_lower_follower_count(limit = 50)    # Don't follow super new (inactive?) accounts.
+#session.set_dont_include(['', ''])             # Don't follow certain users.
+session.set_do_follow(enabled=True,             # When searching images, follow a % of their users.
+    percentage=90, times=2)
 
 # Like relevant posts
 session.like_by_tags([
@@ -25,7 +26,7 @@ session.like_by_tags([
   "#traintracks", "#followtrain", "#sky", "#winter", "#winterwonderland",
   "#fall", "#leaves", "#seasons", "#instamood", "#video", "#relaxing",
   "#autumn", "#traveltheworld"
-], amount=50)
+], amount=10)
 
 # Unfollow users (optional).
 # session.unfollow_users(amount=200, onlyInstapyFollowed = True )
@@ -56,7 +57,7 @@ session.follow_user_followers([
   'travelchannel',
   'natgeotravel',
   'seffis'
-], amount=20, random=False)
+], amount=10, random=True)
 
 # End the bot session
 session.end()
