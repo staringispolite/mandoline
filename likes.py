@@ -1,11 +1,12 @@
 from instapy import InstaPy
 
+# Set env variables INSTA_USER, INSTA_PW
 insta_username = ''
 insta_password = ''
 
 # if you want to run this script on a server,
 # simply add nogui=True to the InstaPy() constructor
-session = InstaPy(username=insta_username, password=insta_password, nogui=True)
+session = InstaPy(nogui=True)
 session.login()
 
 # Set up all the settings
