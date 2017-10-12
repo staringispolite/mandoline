@@ -6,7 +6,7 @@ insta_password = ''
 
 # if you want to run this script on a server,
 # simply add nogui=True to the InstaPy() constructor
-session = InstaPy(nogui=True)
+session = InstaPy(username=insta_username, password=insta_password)
 session.login()
 
 # Set up all the settings
@@ -17,9 +17,9 @@ session.set_do_follow(enabled=True,             # When searching images, follow 
     percentage=90, times=2)
 
 # Like relevant posts
+# Currently 36*5=180
 session.like_by_tags([
-  "#trains", "#train", "#training", "#trainspotting",
-  "#slowtrainkeepsonrolling", "#norway", "#choochoo",
+  "#trains", "#trainspotting", "#norway", "#choochoo",
   "#railroads", "#rail", "#trainstation", "#locomotive",
   "#clouds", "#outside", "#nature", "#slowtv", "#snow", "#trees",
   "#landscape", "#landscapelovers", "#mountains", "#naturelovers",
@@ -27,12 +27,13 @@ session.like_by_tags([
   "#traintracks", "#followtrain", "#sky", "#winter", "#winterwonderland",
   "#fall", "#leaves", "#seasons", "#instamood", "#video", "#relaxing",
   "#autumn", "#traveltheworld"
-], amount=10)
+], amount=5)
 
 # Unfollow users (optional).
 # session.unfollow_users(amount=200, onlyInstapyFollowed = True )
 
 # Follow some users who may be interested in your feed.
+# Currently ~24*10=240
 session.follow_user_followers([
   'wild_trains',
   'trainsgram',
