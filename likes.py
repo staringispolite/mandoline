@@ -17,7 +17,7 @@ session.set_do_follow(enabled=True,             # When searching images, follow 
     percentage=90, times=2)
 
 # Like relevant posts
-# Currently 36*5=180
+# Currently ~36*5=180
 session.like_by_tags([
   "#trains", "#trainspotting", "#norway", "#choochoo",
   "#railroads", "#rail", "#trainstation", "#locomotive",
@@ -30,7 +30,7 @@ session.like_by_tags([
 ], amount=5)
 
 # Unfollow users (optional).
-# session.unfollow_users(amount=200, onlyInstapyFollowed = True )
+session.unfollow_users(amount=200, onlyInstapyFollowed=True)
 
 # Follow some users who may be interested in your feed.
 # Currently ~24*10=240
@@ -59,7 +59,7 @@ session.follow_user_followers([
   'travelchannel',
   'natgeotravel',
   'seffis'
-], amount=10, random=True)
+], amount=5, random=True)
 
 # End the bot session
 session.end()
