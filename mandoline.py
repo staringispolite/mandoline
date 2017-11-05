@@ -36,6 +36,7 @@ def buildHashtags():
 
 # Build a comment based on randomized hashtags and templates
 def buildComment(segment):
+  # TODO: Split out text comments from this, so Twitter bot can use text
   possibles = ["All aboard!", "On my way across Norway!", "Wheeeee", "let's gooo",
       "On my way from Bergen to Oslo", "In the mountains of Norway", "slow & steady",
       "Chugging along", "I am quite slow, but I'm also determined", "steady as she goes",

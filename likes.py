@@ -29,9 +29,6 @@ session.like_by_tags([
   "#autumn", "#traveltheworld"
 ], amount=5)
 
-# Unfollow users (optional).
-session.unfollow_users(amount=200, onlyInstapyFollowed=True)
-
 # Follow some users who may be interested in your feed.
 # Currently ~24*10=240
 session.follow_user_followers([
