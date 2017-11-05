@@ -120,6 +120,12 @@ else:
   print "Calling command %s" % command
   call(command, shell=True)
 
+  # Post to Twitter
+  emojis = buildEmojis()
+  command = "python3 %s../twitter-upload.py --mediapath \"%s\" --status \"%s\"" % (args.path, filename, emojis)
+  print "Calling command %s" % command
+  call(command, shell=True)
+
   segments[next_to_upload_id][POSTED] = 1
 
 # Write segment DB to disk
