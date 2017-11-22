@@ -2,8 +2,12 @@
 # -*- coding: utf-8 -*-
 import argparse
 import csv
+import os
 import random
 from subprocess import call
+
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 # CSV column definitions
 FILENAME = 0
@@ -109,8 +113,8 @@ else:
     i += 1
 
   # Post to IG
-  username = ''
-  password = ''
+  username = os.environ.get('IG_LOGIN').encode('utf-8')  # dotenv encodes these as ascii,
+  password = os.environ.get('IG_PASS').encode('utf-8')   # which will break our UTF-8 script.
   filename = "%s%s" % (args.path, segments[next_to_upload_id][FILENAME])
   comment = buildComment(segments[next_to_upload_id])
   print "Posting %s..." % filename
